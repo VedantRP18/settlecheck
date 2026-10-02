@@ -1,7 +1,7 @@
-pay_001: DUPLICATE_IN_BANK: difference of Rs +499.00. Possible causes: settlement posted twice, or the bank file was imported twice. Check this payment manually.
+pay_Tj0TJmojeycFPA: MISSING_IN_BANK: difference of Rs -999.00. Possible causes: payment not yet settled, settlement delayed, or the bank entry was dropped. Check this payment manually.
 
-pay_004: MISSING_IN_BANK: difference of Rs -499.00. Possible causes: payment not yet settled, settlement delayed, or the bank entry was dropped. Check this payment manually.
+pay_Tj0Stb7eGkQrvf: AMOUNT_MISMATCH: difference of Rs -20.00. Possible causes: gateway fee or tax deducted, partial refund, or a data entry error. Check this payment manually.
 
-pay_009: AMOUNT_MISMATCH: difference of Rs -20.00. Possible causes: gateway fee or tax deducted, partial refund, or a data entry error. Check this payment manually.
+pay_Tj0OmVHej5IG5E: AMOUNT_MISMATCH: difference of Rs +5.00. Possible causes: gateway fee or tax deducted, partial refund, or a data entry error. Check this payment manually.
 
-pay_013: AMOUNT_MISMATCH: difference of Rs +5.00. Possible causes: gateway fee or tax deducted, partial refund, or a data entry error. Check this payment manually.
+pay_Tj0OXfPwfT62YN: DUPLICATE_IN_BANK: difference of Rs +199.00. Possible causes: settlement posted twice, or the bank file was imported twice. Check this payment manually.
