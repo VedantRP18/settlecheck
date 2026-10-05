@@ -1,7 +1,6 @@
 # settlecheck
 # SettleCheck: AI Settlement Reconciliation Assistant
 
-Built for Razorpay's AI Buildathon, Track 4 (AI Finance Controller).
 
 # The problem
 A merchant sees payments in Razorpay, but the money that reaches their bank often doesn't match: a payment goes missing, an amount is short or over, or an entry shows up twice. Checking this by hand in spreadsheets is slow and easy to get wrong.
