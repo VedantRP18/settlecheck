@@ -1,6 +1,8 @@
-import csv, os
+import csv, os, sys
 
-with open("data/issues.csv", newline="") as f:
+sys.stdout.reconfigure(encoding="utf-8")  # so symbols like the rupee sign don't crash Windows
+
+with open("data/issues.csv", newline="", encoding="utf-8") as f:
     issues = list(csv.DictReader(f))
 
 # The only reasons the AI is allowed to pick from
@@ -8,6 +10,7 @@ REASONS = {
     "MISSING_IN_BANK": "payment not yet settled, settlement delayed, or the bank entry was dropped",
     "AMOUNT_MISMATCH": "gateway fee or tax deducted, partial refund, or a data entry error",
     "DUPLICATE_IN_BANK": "settlement posted twice, or the bank file was imported twice",
+    "NOT_IN_PAYMENTS": "bank credit with no matching Razorpay payment: a payment from another source, a wrong ID, or a test entry",
 }
 
 def template_explain(i):
@@ -47,5 +50,5 @@ for i in issues:
 
 report = "\n\n".join(lines)
 print(report)
-with open("data/report.txt", "w") as f:
+with open("data/report.txt", "w", encoding="utf-8") as f:
     f.write(report)

@@ -1,10 +1,21 @@
-import os, csv, razorpay
+import os, csv, sys, razorpay
 from datetime import datetime
 
-client = razorpay.Client(auth=(os.environ["RAZORPAY_KEY_ID"],
-                               os.environ["RAZORPAY_KEY_SECRET"]))
+key_id = os.environ.get("RAZORPAY_KEY_ID")
+key_secret = os.environ.get("RAZORPAY_KEY_SECRET")
+if not key_id or not key_secret:
+    sys.exit("Set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET first (see README).")
 
-items = client.payment.all({"count": 100})["items"]
+client = razorpay.Client(auth=(key_id, key_secret))
+
+# Razorpay returns at most 100 payments per request, so keep asking for the next page.
+items, skip = [], 0
+while True:
+    batch = client.payment.all({"count": 100, "skip": skip})["items"]
+    items.extend(batch)
+    if len(batch) < 100:
+        break
+    skip += 100
 captured = [p for p in items if p["status"] == "captured"]
 
 os.makedirs("data", exist_ok=True)
@@ -15,4 +26,4 @@ with open("data/payments.csv", "w", newline="") as f:
         date = datetime.fromtimestamp(p["created_at"]).strftime("%Y-%m-%d")
         w.writerow([p["id"], date, p["amount"]])
 
-print(f"Saved {len(captured)} captured payments to data/payments.csv")
+print(f"Fetched {len(items)} payments, saved {len(captured)} captured ones to data/payments.csv")
