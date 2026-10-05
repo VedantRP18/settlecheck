@@ -21,7 +21,6 @@ A merchant sees payments in Razorpay, but the money that reaches their bank ofte
 The bank side is simulated because Razorpay's test mode has no real bank. Planting known mistakes lets me check that the tool catches all of them.
 
 # Run it
-# Run it
 Requires Python 3.
 
 ```
