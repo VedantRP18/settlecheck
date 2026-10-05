@@ -22,10 +22,11 @@ A merchant sees payments in Razorpay, but the money that reaches their bank ofte
 The bank side is simulated because Razorpay's test mode has no real bank. Planting known mistakes lets me check that the tool catches all of them.
 
 # Run it
+# Run it
 Requires Python 3.
 
 ```
-py -m pip install razorpay
+py -m pip install -r requirements.txt
 ```
 
 Set your Razorpay **test-mode** keys in the terminal (never put them in code):
@@ -35,15 +36,13 @@ $env:RAZORPAY_KEY_ID="rzp_test_..."
 $env:RAZORPAY_KEY_SECRET="your-secret"
 ```
 
-Then run the steps in order:
+Then run everything with one command:
 
 ```
-py fetch_payments.py
-py make_bank.py
-py reconcile.py
-py explain.py
+py run_all.py
 ```
 
+(Or run the steps one at a time: `fetch_payments.py`, `make_bank.py`, `reconcile.py`, `explain.py`.)
 Expected result with the sample data: 4 issues found (1 missing, 1 Rs 20 short, 1 Rs 5 over, 1 duplicate).
 
 # AI explanations
